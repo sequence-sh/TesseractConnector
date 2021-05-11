@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text;
@@ -16,6 +17,13 @@ using Tesseract;
 namespace Reductech.EDR.Connectors.Tesseract
 {
 
+public enum ImageFormat
+{
+    Png,
+    Bmp,
+    Tif
+}
+
 /// <summary>
 /// Returns true if the file in the specified path exists, false otherwise
 /// </summary>
@@ -24,8 +32,14 @@ public class TesseractOCR : CompoundStep<StringStream>
     [StepProperty(1)]
     [Required]
     [Alias("File")]
-    [Log(LogOutputLevel.Trace)]
+    [Log(LogOutputLevel.None)]
     public IStep<StringStream> ImageData { get; set; } = null!;
+
+    [StepProperty(2)]
+    [Required]
+    [Alias("Format")]
+    [Log(LogOutputLevel.Trace)]
+    public IStep<ImageFormat> ImageFormat { get; set; } = null!;
 
     private static byte[] GetByteArray(StringStream ss)
     {
@@ -46,17 +60,34 @@ public class TesseractOCR : CompoundStep<StringStream>
         if (dataResult.IsFailure)
             return dataResult.ConvertFailure<StringStream>();
 
+        var formatResult = await ImageFormat.Run(stateMonad, cancellationToken);
+
+        if (formatResult.IsFailure)
+            return formatResult.ConvertFailure<StringStream>();
+
         string resultText;
 
         try
         {
             using var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 
-            var data = Pix.LoadTiffFromMemory(dataResult.Value);
+            Pix? data;
+
+            if (formatResult.Value == Tesseract.ImageFormat.Tif)
+                data = Pix.LoadTiffFromMemory(dataResult.Value);
+            else
+            {
+                data = Pix.LoadFromMemory(dataResult.Value);
+            }
 
             using var page = engine.Process(data);
 
             var text = page.GetText();
+
+            stateMonad.Logger.LogInformation(
+                "Performing OCR",
+                page.GetMeanConfidence()
+            ); //TODO use proper logging
 
             stateMonad.Logger.LogInformation("Mean confidence: {0}", page.GetMeanConfidence());
 
@@ -126,7 +157,24 @@ public class TesseractOCR : CompoundStep<StringStream>
     }
 
     /// <inheritdoc />
-    public override IStepFactory StepFactory => new SimpleStepFactory<TesseractOCR, StringStream>();
+    public override IStepFactory StepFactory => TesseractOCRStepFactory.Instance;
+
+    private class TesseractOCRStepFactory : SimpleStepFactory<TesseractOCR, StringStream>
+    {
+        private TesseractOCRStepFactory() { }
+
+        public static SimpleStepFactory<TesseractOCR, StringStream> Instance { get; } =
+            new TesseractOCRStepFactory();
+
+        /// <inheritdoc />
+        public override IEnumerable<Type> ExtraEnumTypes
+        {
+            get
+            {
+                yield return typeof(ImageFormat);
+            }
+        }
+    }
 }
 
 }
