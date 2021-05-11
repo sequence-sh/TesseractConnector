@@ -10,6 +10,7 @@ using Reductech.EDR.Core;
 using Reductech.EDR.Core.Attributes;
 using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
+using Reductech.EDR.Core.Util;
 using Tesseract;
 
 namespace Reductech.EDR.Connectors.Tesseract
@@ -20,15 +21,6 @@ namespace Reductech.EDR.Connectors.Tesseract
 /// </summary>
 public class TesseractOCR : CompoundStep<StringStream>
 {
-    ///// <summary>
-    ///// The path to the file to check.
-    ///// </summary>
-    //[StepProperty(1)]
-    //[Required]
-    //[Alias("File")]
-    //[Log(LogOutputLevel.Trace)]
-    //public IStep<StringStream> Path { get; set; } = null!;
-
     [StepProperty(1)]
     [Required]
     [Alias("File")]
@@ -49,12 +41,6 @@ public class TesseractOCR : CompoundStep<StringStream>
         IStateMonad stateMonad,
         CancellationToken cancellationToken)
     {
-        //var pathResult = await Path.Run(stateMonad, cancellationToken)
-        //    .Map(async x => await x.GetStringAsync());
-
-        //if (pathResult.IsFailure)
-        //    return pathResult.ConvertFailure<StringStream>();
-
         var dataResult = await ImageData.Run(stateMonad, cancellationToken).Map(GetByteArray);
 
         if (dataResult.IsFailure)
@@ -67,8 +53,6 @@ public class TesseractOCR : CompoundStep<StringStream>
             using var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 
             var data = Pix.LoadTiffFromMemory(dataResult.Value);
-
-            //using var img = Pix.LoadFromFile(pathResult.Value);
 
             using var page = engine.Process(data);
 
@@ -134,7 +118,7 @@ public class TesseractOCR : CompoundStep<StringStream>
         }
         catch (Exception e)
         {
-            var error = ErrorCode.Unknown.ToErrorBuilder(e.Message).WithLocation(this);
+            var error = ErrorCode.Unknown.ToErrorBuilder(e.GetFullMessage()).WithLocation(this);
             return Result.Failure<StringStream, IError>(error);
         }
 
