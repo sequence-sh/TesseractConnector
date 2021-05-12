@@ -17,13 +17,6 @@ using Tesseract;
 namespace Reductech.EDR.Connectors.Tesseract
 {
 
-public enum ImageFormat
-{
-    Png,
-    Bmp,
-    Tif
-}
-
 /// <summary>
 /// Returns true if the file in the specified path exists, false otherwise
 /// </summary>
@@ -36,10 +29,11 @@ public class TesseractOCR : CompoundStep<StringStream>
     public IStep<StringStream> ImageData { get; set; } = null!;
 
     [StepProperty(2)]
-    [Required]
+    [DefaultValueExplanation("Default")]
     [Alias("Format")]
     [Log(LogOutputLevel.Trace)]
-    public IStep<ImageFormat> ImageFormat { get; set; } = null!;
+    public IStep<ImageFormat> ImageFormat { get; set; } =
+        new EnumConstant<ImageFormat>(Tesseract.ImageFormat.Default);
 
     private static byte[] GetByteArray(StringStream ss)
     {
