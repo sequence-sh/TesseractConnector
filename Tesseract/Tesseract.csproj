@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reductech.EDR.Core" Version="0.9.0-a.master.2105111439" />
+    <PackageReference Include="Reductech.EDR.Core" Version="0.9.0-a.master.2105121639" />
     <PackageReference Include="Tesseract" Version="4.1.1" />
   </ItemGroup>
 
