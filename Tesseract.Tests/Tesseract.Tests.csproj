@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,11 +6,11 @@
     <IsPublishable>false</IsPublishable>
     <IsTestProject>true</IsTestProject>
     <Nullable>enable</Nullable>
-    <RootNamespace>Reductech.Templates.EDRConnector.Tests</RootNamespace>
+    <RootNamespace>Reductech.EDR.Connectors.Tesseract.Tests</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <RepositoryUrl>https://gitlab.com/reductech/templates/edr-connector</RepositoryUrl>
+    <RepositoryUrl>https://gitlab.com/reductech/edr/connectors/tesseract</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Authors>Reductech</Authors>
     <Company>Reductech</Company>
@@ -18,14 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
-    <PackageReference Include="Reductech.EDR.Core.TestHarness" Version="0.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Reductech.EDR.Connectors.FileSystem" Version="0.9.0-a.master.2104231408" />
+    <PackageReference Include="Reductech.EDR.Core.TestHarness" Version="0.9.0-a.master.2105121639" />
+    <PackageReference Include="System.IO.Abstractions" Version="13.2.31" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.0.2">
+    <PackageReference Include="coverlet.collector" Version="3.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -36,7 +38,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EDRConnector\EDRConnector.csproj" />
+    <ProjectReference Include="..\Tesseract\Tesseract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="phototest.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="phototest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="phototest.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
