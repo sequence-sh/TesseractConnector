@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>Reductech.EDR.Connectors.Tesseract</RootNamespace>
@@ -35,10 +36,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="tessdata\eng.traineddata">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <PackagePath>contentFiles\any\any\tessdata</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
   </ItemGroup>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeTesseractDependencies</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <Target Name="IncludeTesseractDependencies" Condition="$(PackConnector) != ''">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)x64\leptonica-1.80.0.dll">
+        <TargetPath>x64\leptonica-1.80.0.dll</TargetPath>
+      </BuildOutputInPackage>
+      <BuildOutputInPackage Include="$(OutputPath)x64\tesseract41.dll">
+        <TargetPath>x64\tesseract41.dll</TargetPath>
+      </BuildOutputInPackage>
+    </ItemGroup>
+  </Target>
 
   <PropertyGroup Condition="$(PackConnector) != ''">
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
