@@ -7,6 +7,8 @@
     <IsTestProject>true</IsTestProject>
     <Nullable>enable</Nullable>
     <RootNamespace>Reductech.EDR.Connectors.Tesseract.Tests</RootNamespace>
+    <!-- Needs version otherwise connector pack for prerelease versions does not work. -->
+    <Version>0.1.0-alpha$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
