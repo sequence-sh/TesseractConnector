@@ -3,9 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract", "Tesseract\Tesseract.csproj", "{FCB76735-C168-4713-AB70-1FFCC0FDE652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tesseract", "Tesseract\Tesseract.csproj", "{FCB76735-C168-4713-AB70-1FFCC0FDE652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesseract.Tests", "Tesseract.Tests\Tesseract.Tests.csproj", "{A313A1FB-CEDD-44D0-9894-1E039338363F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tesseract.Tests", "Tesseract.Tests\Tesseract.Tests.csproj", "{A313A1FB-CEDD-44D0-9894-1E039338363F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD6B399E-70E2-45AC-B0DE-71D89FF37894}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
+		.gitlab\issue_templates\Bug.md = .gitlab\issue_templates\Bug.md
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+		.gitlab\issue_templates\Feature.md = .gitlab\issue_templates\Feature.md
+		LICENSE = LICENSE
+		README.md = README.md
+		Tesseract.sln.DotSettings = Tesseract.sln.DotSettings
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FCB76735-C168-4713-AB70-1FFCC0FDE652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +54,11 @@ Global
 		{A313A1FB-CEDD-44D0-9894-1E039338363F}.Release|x64.Build.0 = Release|Any CPU
 		{A313A1FB-CEDD-44D0-9894-1E039338363F}.Release|x86.ActiveCfg = Release|Any CPU
 		{A313A1FB-CEDD-44D0-9894-1E039338363F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E4609AA-7598-4B3D-A219-4741BA8AD18B}
 	EndGlobalSection
 EndGlobal
