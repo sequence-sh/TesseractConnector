@@ -1,22 +1,28 @@
-# EDR Tesseract Connector
+# EDR Tesseract OCR Connector
 
 [Reductech EDR](https://gitlab.com/reductech/edr) is a collection of
 libraries that automates cross-application e-discovery and forensic workflows.
 
-This connector contains Steps to interact with...
+This connector contains steps to perform optical character recognition (OCR)
+on image files. It uses the [Tesseract](https://github.com/tesseract-ocr/tesseract)
+open source library as the OCR engine.
 
-## Steps
+## Prerequisites
 
-|       Step        | Description                                           | Result Type |
-| :---------------: | :---------------------------------------------------- | :---------: |
-| `CheckFileExists` | Checks if a given path exists and returns true/false. |   `bool`    |
+The following needs to be installed:
+
+- [Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)
 
 ## Examples
 
-To check if a file exists and print the result:
+### OCR a bitmap image
 
 ```scala
-- Print (CheckFileExists 'c:\path\to\file.txt')
+- <path> = 'MyImage.bmp'
+- <imageData> = FileRead <path>
+- <imageFormat> = GetImageFormat <path>
+- <imageText> = TesseractOCR <imageData> <imageFormat>
+- Print <imageText>
 ```
 
 ### [Try Tesseract Connector](https://gitlab.com/reductech/edr/edr/-/releases)
