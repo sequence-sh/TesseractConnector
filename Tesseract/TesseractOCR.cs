@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,12 +23,18 @@ namespace Reductech.EDR.Connectors.Tesseract
 /// </summary>
 public class TesseractOCR : CompoundStep<StringStream>
 {
+    /// <summary>
+    /// The image data to OCR
+    /// </summary>
     [StepProperty(1)]
     [Required]
     [Alias("File")]
     [Log(LogOutputLevel.None)]
     public IStep<StringStream> ImageData { get; set; } = null!;
 
+    /// <summary>
+    /// The format of the image
+    /// </summary>
     [StepProperty(2)]
     [DefaultValueExplanation("Default")]
     [Alias("Format")]
@@ -37,11 +44,14 @@ public class TesseractOCR : CompoundStep<StringStream>
 
     private static byte[] GetByteArray(StringStream ss)
     {
-        using MemoryStream ms = new();
+        var stream = ss.GetStream().stream;
 
-        //todo if stream is a memory stream
-        ss.GetStream().stream.CopyTo(ms);
-        return ms.ToArray();
+        if (stream is MemoryStream ms1)
+            return ms1.ToArray();
+
+        using MemoryStream ms2 = new();
+        stream.CopyTo(ms2);
+        return ms2.ToArray();
     }
 
     /// <inheritdoc />
@@ -59,11 +69,17 @@ public class TesseractOCR : CompoundStep<StringStream>
         if (formatResult.IsFailure)
             return formatResult.ConvertFailure<StringStream>();
 
+        var tesseractSettings = SettingsHelpers.TryGetTesseractSettings(
+                stateMonad.StepFactoryStore.ConnectorData.Select(x => x.ConnectorSettings)
+            )
+            .ToMaybe()
+            .Unwrap(TesseractSettings.Default);
+
         string resultText;
 
         try
         {
-            using var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+            using var engine = tesseractSettings.GetEngine();
 
             Pix? data;
 
