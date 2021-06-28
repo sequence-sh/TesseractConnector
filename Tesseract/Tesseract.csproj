@@ -8,7 +8,7 @@
     <RootNamespace>Reductech.EDR.Connectors.Tesseract</RootNamespace>
     <AssemblyName>Reductech.EDR.Connectors.Tesseract</AssemblyName>
     <Nullable>enable</Nullable>
-    <Version>0.9.0-alpha.2$(VersionSuffix)</Version>
+    <Version>0.10.0-alpha$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
