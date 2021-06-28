@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using CSharpFunctionalExtensions;
 using Reductech.EDR.Core;
-using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
+using Entity = Reductech.EDR.Core.Entity;
 
 namespace Reductech.EDR.Connectors.Tesseract
 {
@@ -17,23 +14,16 @@ public static class SettingsHelpers
     /// <summary>
     /// Try to get a TesseractSettings from a list of Connector Informations
     /// </summary>
-    public static Result<TesseractSettings, IErrorBuilder> TryGetTesseractSettings(
-        IEnumerable<ConnectorSettings> connectorSettings)
+    public static Result<TesseractSettings, IErrorBuilder> TryGetTesseractSettings(Entity settings)
     {
-        var connectorInformation =
-            connectorSettings.FirstOrDefault(
-                x => x.Id.EndsWith("Tesseract", StringComparison.OrdinalIgnoreCase)
-            );
+        var connectorSettings = settings.TryGetValue("Tesseract");
 
-        if (connectorInformation is null)
+        if (connectorSettings.HasNoValue || connectorSettings.Value.ObjectValue is not Entity ent)
             return ErrorCode.MissingStepSettings.ToErrorBuilder("Tesseract");
 
-        var nuixSettings =
-            EntityConversionHelpers.TryCreateFromEntity<TesseractSettings>(
-                connectorInformation.Settings
-            );
+        var settingsObj = EntityConversionHelpers.TryCreateFromEntity<TesseractSettings>(ent);
 
-        return nuixSettings;
+        return settingsObj;
     }
 }
 
