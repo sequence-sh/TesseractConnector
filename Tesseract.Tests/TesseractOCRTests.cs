@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using Reductech.EDR.Connectors.FileSystem;
 using Reductech.EDR.Core;
 using Reductech.EDR.Core.Internal;
@@ -17,16 +16,8 @@ public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream
         var tesseractAssembly  = Assembly.GetAssembly(typeof(TesseractOCR))!;
         var fileSystemAssembly = Assembly.GetAssembly(typeof(FileRead))!;
 
-        var stepFactoryStore = StepFactoryStore.Create(
-            new ConnectorData(
-                ConnectorSettings.DefaultForAssembly(tesseractAssembly),
-                tesseractAssembly
-            ),
-            new ConnectorData(
-                ConnectorSettings.DefaultForAssembly(fileSystemAssembly),
-                fileSystemAssembly
-            )
-        );
+        var stepFactoryStore =
+            StepFactoryStore.CreateFromAssemblies(tesseractAssembly, fileSystemAssembly);
 
         return stepFactoryStore;
     }

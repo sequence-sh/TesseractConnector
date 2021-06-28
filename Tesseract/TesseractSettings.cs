@@ -42,8 +42,8 @@ public class TesseractSettings : IEntityConvertible
             tessDataPath = TessDataPath;
         else
         {
-            var nuixAssembly = Assembly.GetAssembly(typeof(TesseractOCR))!;
-            tessDataPath = Path.Combine(nuixAssembly.Location, "..", "tessData");
+            var assembly = Assembly.GetAssembly(typeof(TesseractOCR))!;
+            tessDataPath = Path.Combine(assembly.Location, "..", "tessData");
         }
 
         var engine = new TesseractEngine(tessDataPath, "eng", EngineMode.Default);

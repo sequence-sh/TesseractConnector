@@ -69,9 +69,7 @@ public class TesseractOCR : CompoundStep<StringStream>
         if (formatResult.IsFailure)
             return formatResult.ConvertFailure<StringStream>();
 
-        var tesseractSettings = SettingsHelpers.TryGetTesseractSettings(
-                stateMonad.StepFactoryStore.ConnectorData.Select(x => x.ConnectorSettings)
-            )
+        var tesseractSettings = SettingsHelpers.TryGetTesseractSettings(stateMonad.Settings)
             .ToMaybe()
             .Unwrap(TesseractSettings.Default);
 
