@@ -52,6 +52,9 @@ public class GetImageFormat : CompoundStep<ImageFormat>
     private static readonly Regex FormatRegex =
         new(@"\A(.*\.)?(?<extension>[a-z]+)\Z", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
+    /// <summary>
+    /// Convert a string to an ImageFormat enum.
+    /// </summary>
     public static ImageFormat ConvertString(string s)
     {
         var result = s.ToLowerInvariant()
