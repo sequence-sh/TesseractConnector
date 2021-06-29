@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Reflection;
+using Reductech.EDR.ConnectorManagement.Base;
 using Reductech.EDR.Connectors.FileSystem;
 using Reductech.EDR.Core;
 using Reductech.EDR.Core.Internal;
+using Reductech.EDR.Core.Internal.Errors;
 using Reductech.EDR.Core.TestHarness;
 using static Reductech.EDR.Core.TestHarness.StaticHelpers;
 
@@ -11,7 +13,7 @@ namespace Reductech.EDR.Connectors.Tesseract.Tests
 
 public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream>
 {
-    public static StepFactoryStore CreateStepFactoryStore()
+    public static StepFactoryStore CreateTestStepFactoryStore()
     {
         var tesseractAssembly  = Assembly.GetAssembly(typeof(TesseractOCR))!;
         var fileSystemAssembly = Assembly.GetAssembly(typeof(FileRead))!;
@@ -37,7 +39,7 @@ brown dog jumped over the lazy fox.";
     {
         get
         {
-            var stepFactoryStore = CreateStepFactoryStore();
+            var stepFactoryStore = CreateTestStepFactoryStore();
 
             yield return new StepCase(
                     "Check tif",
@@ -89,6 +91,61 @@ brown dog jumped over the lazy fox.";
                     ConnectorInjection.FileSystemKey,
                     new System.IO.Abstractions.FileSystem()
                 );
+        }
+    }
+
+    /// <inheritdoc />
+    protected override IEnumerable<ErrorCase> ErrorCases
+    {
+        get
+        {
+            var tesseractAssembly  = Assembly.GetAssembly(typeof(TesseractOCR))!;
+            var fileSystemAssembly = Assembly.GetAssembly(typeof(FileRead))!;
+
+            var tesseractData = new ConnectorData(
+                new ConnectorSettings()
+                {
+                    Enable = true,
+                    Id     = tesseractAssembly.GetName().Name!,
+                    Settings = new Dictionary<string, object>()
+                    {
+                        { nameof(TesseractSettings.TessDataPath), "NotARealPath" }
+                    }
+                },
+                tesseractAssembly
+            );
+
+            var fileSystemData = new ConnectorData(
+                ConnectorSettings.DefaultForAssembly(fileSystemAssembly),
+                fileSystemAssembly
+            );
+
+            var stepFactoryStore =
+                StepFactoryStore.Create(fileSystemData, tesseractData);
+
+            yield return new ErrorCase(
+                    "Test Bad Settings",
+                    new TesseractOCR
+                    {
+                        ImageData = new FileRead
+                        {
+                            Path = new PathCombine { Paths = Array("phototest.tif") },
+                        },
+                        ImageFormat = Constant(ImageFormat.Tif)
+                    },
+                    ErrorCode.Unknown.ToErrorBuilder(
+                        "Failed to initialise tesseract engine.. See https://github.com/charlesw/tesseract/wiki/Error-1 for details."
+                    )
+                ) { IgnoreLoggedValues = true, StepFactoryStoreToUse = stepFactoryStore }
+                .WithContext(
+                    ConnectorInjection.FileSystemKey,
+                    new System.IO.Abstractions.FileSystem()
+                );
+
+            foreach (var errorCase in base.ErrorCases)
+            {
+                yield return errorCase;
+            }
         }
     }
 }
