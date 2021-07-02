@@ -1,3 +1,15 @@
+# v0.10.0 (2021-07-02)
+
+## Issues Closed in this Release
+
+### Bug Fixes
+
+- StateMonad settings has a nested connectors object #8
+
+### Maintenance
+
+- Update Core to latest and remove SCLSettings #7
+
 # v0.9.0-alpha.2 (2021-06-08)
 
 ## Issues Closed in this Release
