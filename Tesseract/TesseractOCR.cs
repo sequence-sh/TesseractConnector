@@ -71,7 +71,7 @@ public class TesseractOCR : CompoundStep<StringStream>
 
         var tesseractSettings = SettingsHelpers.TryGetTesseractSettings(stateMonad.Settings)
             .ToMaybe()
-            .Unwrap(TesseractSettings.Default);
+            .GetValueOrDefault(TesseractSettings.Default);
 
         string resultText;
 

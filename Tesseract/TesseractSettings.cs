@@ -22,7 +22,7 @@ public class TesseractSettings : IEntityConvertible
     /// <summary>
     /// The path to the TessData folder
     /// </summary>
-    [JsonPropertyName("tessDataPath")]
+    [JsonPropertyName("TessDataPath")]
     public string? TessDataPath { get; set; }
 
     /// <summary>
