@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using Reductech.EDR.Core;
 using Tesseract;
 
@@ -22,7 +22,7 @@ public class TesseractSettings : IEntityConvertible
     /// <summary>
     /// The path to the TessData folder
     /// </summary>
-    [JsonProperty("tessDataPath")]
+    [JsonPropertyName("TessDataPath")]
     public string? TessDataPath { get; set; }
 
     /// <summary>
