@@ -3,6 +3,7 @@ using System.Reflection;
 using Reductech.EDR.ConnectorManagement.Base;
 using Reductech.EDR.Connectors.FileSystem;
 using Reductech.EDR.Core;
+using Reductech.EDR.Core.Abstractions;
 using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
 using Reductech.EDR.Core.TestHarness;
@@ -19,7 +20,12 @@ public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream
         var fileSystemAssembly = Assembly.GetAssembly(typeof(FileRead))!;
 
         var stepFactoryStore =
-            StepFactoryStore.CreateFromAssemblies(tesseractAssembly, fileSystemAssembly);
+            StepFactoryStore.TryCreateFromAssemblies(
+                    ExternalContext.Default,
+                    tesseractAssembly,
+                    fileSystemAssembly
+                )
+                .Value;
 
         return stepFactoryStore;
     }
@@ -121,7 +127,7 @@ brown dog jumped over the lazy fox.";
             );
 
             var stepFactoryStore =
-                StepFactoryStore.Create(fileSystemData, tesseractData);
+                StepFactoryStore.TryCreate(ExternalContext.Default, fileSystemData, tesseractData);
 
             yield return new ErrorCase(
                     "Test Bad Settings",
@@ -136,7 +142,7 @@ brown dog jumped over the lazy fox.";
                     ErrorCode.Unknown.ToErrorBuilder(
                         "Failed to initialise tesseract engine.. See https://github.com/charlesw/tesseract/wiki/Error-1 for details."
                     )
-                ) { IgnoreLoggedValues = true, StepFactoryStoreToUse = stepFactoryStore }
+                ) { IgnoreLoggedValues = true, StepFactoryStoreToUse = stepFactoryStore.Value }
                 .WithContext(
                     ConnectorInjection.FileSystemKey,
                     new System.IO.Abstractions.FileSystem()
