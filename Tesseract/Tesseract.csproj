@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -8,7 +8,7 @@
     <RootNamespace>Reductech.EDR.Connectors.Tesseract</RootNamespace>
     <AssemblyName>Reductech.EDR.Connectors.Tesseract</AssemblyName>
     <Nullable>enable</Nullable>
-    <Version>0.11.0-alpha.1$(VersionSuffix)</Version>
+    <Version>0.12.0-alpha.1$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
