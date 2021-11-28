@@ -1,3 +1,7 @@
+# v0.12.0-alpha.1 (2021-11-26)
+
+Maintenance release - dependency updates only.
+
 # v0.11.0 (2021-09-03)
 
 Dependency updates only
@@ -46,3 +50,4 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
+
