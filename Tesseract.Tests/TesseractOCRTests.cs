@@ -1,16 +1,9 @@
-using System.Collections.Generic;
 using System.Reflection;
 using Reductech.EDR.ConnectorManagement.Base;
 using Reductech.EDR.Connectors.FileSystem;
-using Reductech.EDR.Core;
 using Reductech.EDR.Core.Abstractions;
-using Reductech.EDR.Core.Internal;
-using Reductech.EDR.Core.Internal.Errors;
-using Reductech.EDR.Core.TestHarness;
-using static Reductech.EDR.Core.TestHarness.StaticHelpers;
 
-namespace Reductech.EDR.Connectors.Tesseract.Tests
-{
+namespace Reductech.EDR.Connectors.Tesseract.Tests;
 
 public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream>
 {
@@ -154,6 +147,4 @@ brown dog jumped over the lazy fox.";
             }
         }
     }
-}
-
 }

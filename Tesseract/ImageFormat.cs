@@ -1,5 +1,4 @@
-namespace Reductech.EDR.Connectors.Tesseract
-{
+namespace Reductech.EDR.Connectors.Tesseract;
 
 /// <summary>
 /// The format of the image to OCR.
@@ -35,6 +34,4 @@ public enum ImageFormat
     /// Graphics Interchange Format
     /// </summary>
     GIF
-}
-
 }

@@ -1,12 +1,8 @@
-using CSharpFunctionalExtensions;
 using Reductech.EDR.ConnectorManagement.Base;
-using Reductech.EDR.Core;
-using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
 using Entity = Reductech.EDR.Core.Entity;
 
-namespace Reductech.EDR.Connectors.Tesseract
-{
+namespace Reductech.EDR.Connectors.Tesseract;
 
 /// <summary>
 /// Contains helper methods for Tesseract settings
@@ -36,6 +32,4 @@ public static class SettingsHelpers
 
         return settingsObj;
     }
-}
-
 }

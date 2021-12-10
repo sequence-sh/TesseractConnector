@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Reductech.EDR.Core.TestHarness;
-
-namespace Reductech.EDR.Connectors.Tesseract.Tests
-{
+namespace Reductech.EDR.Connectors.Tesseract.Tests;
 
 public partial class GetImageFormatTests : StepTestBase<GetImageFormat, ImageFormat>
 {
@@ -34,6 +30,4 @@ public partial class GetImageFormatTests : StepTestBase<GetImageFormat, ImageFor
             yield return GetStepCase("png",       ImageFormat.Png);
         }
     }
-}
-
 }

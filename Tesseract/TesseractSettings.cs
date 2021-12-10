@@ -1,12 +1,9 @@
-using System;
 using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using Reductech.EDR.Core;
 using Tesseract;
 
-namespace Reductech.EDR.Connectors.Tesseract
-{
+namespace Reductech.EDR.Connectors.Tesseract;
 
 /// <summary>
 /// Settings for the Tesseract connector
@@ -49,6 +46,4 @@ public class TesseractSettings : IEntityConvertible
         var engine = new TesseractEngine(tessDataPath, "eng", EngineMode.Default);
         return engine;
     }
-}
-
 }
