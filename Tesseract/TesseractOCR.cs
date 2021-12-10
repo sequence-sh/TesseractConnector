@@ -1,22 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 using Microsoft.Extensions.Logging;
-using Reductech.EDR.Core;
-using Reductech.EDR.Core.Attributes;
-using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
-using Reductech.EDR.Core.Util;
 using Tesseract;
 
-namespace Reductech.EDR.Connectors.Tesseract
-{
+namespace Reductech.EDR.Connectors.Tesseract;
 
 /// <summary>
 /// Returns true if the file in the specified path exists, false otherwise
@@ -125,32 +113,32 @@ public class TesseractOCR : CompoundStep<StringStream>
                             sb.Append(' ');
 
                             if (iterator.IsAtFinalOf(
-                                PageIteratorLevel.TextLine,
-                                PageIteratorLevel.Word
-                            ))
+                                    PageIteratorLevel.TextLine,
+                                    PageIteratorLevel.Word
+                                ))
                             {
                                 sb.AppendLine();
                             }
                         } while (iterator.Next(
-                            PageIteratorLevel.TextLine,
-                            PageIteratorLevel.Word
-                        ));
+                                     PageIteratorLevel.TextLine,
+                                     PageIteratorLevel.Word
+                                 ));
 
                         if (iterator.IsAtFinalOf(
-                            PageIteratorLevel.Para,
-                            PageIteratorLevel.TextLine
-                        ))
+                                PageIteratorLevel.Para,
+                                PageIteratorLevel.TextLine
+                            ))
                         {
                             sb.AppendLine();
                         }
                     } while (iterator.Next(
-                        PageIteratorLevel.Para,
-                        PageIteratorLevel.TextLine
-                    ));
+                                 PageIteratorLevel.Para,
+                                 PageIteratorLevel.TextLine
+                             ));
                 } while (iterator.Next(
-                    PageIteratorLevel.Block,
-                    PageIteratorLevel.Para
-                ));
+                             PageIteratorLevel.Block,
+                             PageIteratorLevel.Para
+                         ));
             } while (iterator.Next(PageIteratorLevel.Block));
 
             resultText = sb.ToString().Trim();
@@ -183,6 +171,4 @@ public class TesseractOCR : CompoundStep<StringStream>
             }
         }
     }
-}
-
 }

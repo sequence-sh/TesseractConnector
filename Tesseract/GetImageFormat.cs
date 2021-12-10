@@ -1,15 +1,7 @@
-using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
-using Reductech.EDR.Core;
-using Reductech.EDR.Core.Attributes;
-using Reductech.EDR.Core.Internal;
 using Reductech.EDR.Core.Internal.Errors;
 
-namespace Reductech.EDR.Connectors.Tesseract
-{
+namespace Reductech.EDR.Connectors.Tesseract;
 
 /// <summary>
 /// Gets the image format implied by the file extension of the file name.
@@ -76,6 +68,4 @@ public class GetImageFormat : CompoundStep<ImageFormat>
     /// <inheritdoc />
     public override IStepFactory StepFactory { get; } =
         new SimpleStepFactory<GetImageFormat, ImageFormat>();
-}
-
 }
