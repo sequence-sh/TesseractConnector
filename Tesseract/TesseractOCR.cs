@@ -27,8 +27,10 @@ public class TesseractOCR : CompoundStep<StringStream>
     [DefaultValueExplanation("Default")]
     [Alias("Format")]
     [Log(LogOutputLevel.Trace)]
-    public IStep<ImageFormat> ImageFormat { get; set; } =
-        new EnumConstant<ImageFormat>(Tesseract.ImageFormat.Default);
+    public IStep<SCLEnum<ImageFormat>> ImageFormat { get; set; } =
+        new SCLConstant<SCLEnum<ImageFormat>>(
+            new SCLEnum<ImageFormat>(Tesseract.ImageFormat.Default)
+        );
 
     private static byte[] GetByteArray(StringStream ss)
     {
@@ -85,9 +87,12 @@ public class TesseractOCR : CompoundStep<StringStream>
                 page.GetMeanConfidence()
             ); //TODO use proper logging
 
-            stateMonad.Logger.LogInformation("Mean confidence: {0}", page.GetMeanConfidence());
+            stateMonad.Logger.LogInformation(
+                "Mean confidence: {Confidence}",
+                page.GetMeanConfidence()
+            );
 
-            stateMonad.Logger.LogInformation("Text (GetText): \r\n{0}", text);
+            stateMonad.Logger.LogInformation("Text (GetText): \r\n{OCRText}", text);
             stateMonad.Logger.LogInformation("Text (iterator):");
 
             var sb = new StringBuilder();

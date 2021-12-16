@@ -1,6 +1,6 @@
 namespace Reductech.EDR.Connectors.Tesseract.Tests;
 
-public partial class GetImageFormatTests : StepTestBase<GetImageFormat, ImageFormat>
+public partial class GetImageFormatTests : StepTestBase<GetImageFormat, SCLEnum<ImageFormat>>
 {
     /// <inheritdoc />
     protected override IEnumerable<StepCase> StepCases
@@ -12,7 +12,7 @@ public partial class GetImageFormatTests : StepTestBase<GetImageFormat, ImageFor
                 return new(
                     $"{fName} - {expected}",
                     new GetImageFormat() { FileName = StaticHelpers.Constant(fName) },
-                    expected
+                    new SCLEnum<ImageFormat>(expected)
                 );
             }
 

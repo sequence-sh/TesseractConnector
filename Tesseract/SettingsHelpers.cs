@@ -23,7 +23,7 @@ public static class SettingsHelpers
         );
 
         if (connectorSettings.HasNoValue
-         || connectorSettings.GetValueOrThrow().ObjectValue is not Entity ent)
+         || connectorSettings.GetValueOrThrow() is not Entity ent)
             return ErrorCode.MissingStepSettings.ToErrorBuilder(
                 "Reductech.EDR.Connectors.Tesseract"
             );

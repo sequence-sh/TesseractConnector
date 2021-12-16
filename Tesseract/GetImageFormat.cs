@@ -7,7 +7,7 @@ namespace Reductech.EDR.Connectors.Tesseract;
 /// Gets the image format implied by the file extension of the file name.
 /// Note that this does not actually look at the file.
 /// </summary>
-public class GetImageFormat : CompoundStep<ImageFormat>
+public class GetImageFormat : CompoundStep<SCLEnum<ImageFormat>>
 {
     /// <summary>
     /// The name of the image file
@@ -17,7 +17,7 @@ public class GetImageFormat : CompoundStep<ImageFormat>
     public IStep<StringStream> FileName { get; set; } = null!;
 
     /// <inheritdoc />
-    protected override async Task<Result<ImageFormat, IError>> Run(
+    protected override async Task<Result<SCLEnum<ImageFormat>, IError>> Run(
         IStateMonad stateMonad,
         CancellationToken cancellationToken)
     {
@@ -25,7 +25,7 @@ public class GetImageFormat : CompoundStep<ImageFormat>
             await FileName.Run(stateMonad, cancellationToken).Map(x => x.GetStringAsync());
 
         if (fileName.IsFailure)
-            return fileName.ConvertFailure<ImageFormat>();
+            return fileName.ConvertFailure<SCLEnum<ImageFormat>>();
 
         var match = FormatRegex.Match(fileName.Value);
 
@@ -33,11 +33,11 @@ public class GetImageFormat : CompoundStep<ImageFormat>
         {
             var result = ConvertString(match.Groups["extension"].Value.ToLowerInvariant());
 
-            return result;
+            return new SCLEnum<ImageFormat>(result);
         }
         else
         {
-            return ImageFormat.Default;
+            return new SCLEnum<ImageFormat>(ImageFormat.Default);
         }
     }
 
@@ -67,5 +67,5 @@ public class GetImageFormat : CompoundStep<ImageFormat>
 
     /// <inheritdoc />
     public override IStepFactory StepFactory { get; } =
-        new SimpleStepFactory<GetImageFormat, ImageFormat>();
+        new SimpleStepFactory<GetImageFormat, SCLEnum<ImageFormat>>();
 }
