@@ -1,7 +1,7 @@
-using System.Text.RegularExpressions;
-using Reductech.EDR.Core.Internal.Errors;
+﻿using System.Text.RegularExpressions;
+using Reductech.Sequence.Core.Internal.Errors;
 
-namespace Reductech.EDR.Connectors.Tesseract;
+namespace Reductech.Sequence.Connectors.Tesseract;
 
 /// <summary>
 /// Gets the image format implied by the file extension of the file name.

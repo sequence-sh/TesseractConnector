@@ -1,10 +1,10 @@
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using Microsoft.Extensions.Logging;
-using Reductech.EDR.Core.Internal.Errors;
+using Reductech.Sequence.Core.Internal.Errors;
 using Tesseract;
 
-namespace Reductech.EDR.Connectors.Tesseract;
+namespace Reductech.Sequence.Connectors.Tesseract;
 
 /// <summary>
 /// Returns true if the file in the specified path exists, false otherwise

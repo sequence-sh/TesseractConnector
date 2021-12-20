@@ -5,22 +5,22 @@
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RootNamespace>Reductech.EDR.Connectors.Tesseract</RootNamespace>
-    <AssemblyName>Reductech.EDR.Connectors.Tesseract</AssemblyName>
+    <RootNamespace>Reductech.Sequence.Connectors.Tesseract</RootNamespace>
+    <AssemblyName>Reductech.Sequence.Connectors.Tesseract</AssemblyName>
     <Nullable>enable</Nullable>
     <Version>0.13.0-alpha.1$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Reductech.EDR.Connectors.Tesseract</PackageId>
-    <Title>EDR Tesseract OCR Connector</Title>
-    <Description>A class library for using Tesseract OCR in EDR Sequences</Description>
-    <Product>EDR</Product>
-    <PackageTags>ediscovery;forensics;edrm;automation;orchestration;ocr</PackageTags>
+    <PackageId>Reductech.Sequence.Connectors.Tesseract</PackageId>
+    <Title>Sequence® Tesseract OCR Connector</Title>
+    <Description>A class library for using Tesseract OCR in Sequence®</Description>
+    <Product>Sequence®</Product>
+    <PackageTags>ediscovery;forensics;edrm;automation;orchestration;ocr;sequence</PackageTags>
 
-    <PackageProjectUrl>https://gitlab.com/reductech/edr/connectors/tesseract</PackageProjectUrl>
-    <RepositoryUrl>https://gitlab.com/reductech/edr/connectors/tesseract</RepositoryUrl>
-    <PackageReleaseNotes>Please see https://gitlab.com/reductech/edr/connectors/tesseract/-/releases</PackageReleaseNotes>
+    <PackageProjectUrl>https://gitlab.com/reductech/sequence/connectors/tesseract</PackageProjectUrl>
+    <RepositoryUrl>https://gitlab.com/reductech/sequence/connectors/tesseract</RepositoryUrl>
+    <PackageReleaseNotes>Please see https://gitlab.com/reductech/sequence/connectors/tesseract/-/releases</PackageReleaseNotes>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <Authors>Reductech</Authors>
@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reductech.EDR.Core" Version="0.13.0-a.main.2112200210">
+    <PackageReference Include="Reductech.Sequence.Core" Version="0.13.0-a.main.2112201532">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tesseract" Version="4.1.1" />

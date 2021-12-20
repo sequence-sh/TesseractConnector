@@ -6,6 +6,6 @@ default:
   image: registry.gitlab.com/reductech/containers/msvc
 
 variables:
-  PACKAGE_NAME_NUGET: Reductech.EDR.Connectors.Tesseract
-  PACKAGE_NAME_DLL: Reductech.EDR.Connectors.Tesseract
+  PACKAGE_NAME_NUGET: Reductech.Sequence.Connectors.Tesseract
+  PACKAGE_NAME_DLL: Reductech.Sequence.Connectors.Tesseract
   PUBLISH_CONNECTOR: 1
