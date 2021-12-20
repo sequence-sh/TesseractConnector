@@ -1,4 +1,4 @@
-namespace Reductech.EDR.Connectors.Tesseract;
+﻿namespace Reductech.Sequence.Connectors.Tesseract;
 
 /// <summary>
 /// The format of the image to OCR.

@@ -1,8 +1,8 @@
-using Reductech.EDR.ConnectorManagement.Base;
-using Reductech.EDR.Core.Internal.Errors;
-using Entity = Reductech.EDR.Core.Entity;
+﻿using Reductech.Sequence.ConnectorManagement.Base;
+using Reductech.Sequence.Core.Internal.Errors;
+using Entity = Reductech.Sequence.Core.Entity;
 
-namespace Reductech.EDR.Connectors.Tesseract;
+namespace Reductech.Sequence.Connectors.Tesseract;
 
 /// <summary>
 /// Contains helper methods for Tesseract settings
@@ -17,7 +17,7 @@ public static class SettingsHelpers
         var connectorSettings = settings.TryGetValue(
             new EntityPropertyKey(
                 StateMonad.ConnectorsKey,
-                "Reductech.EDR.Connectors.Tesseract",
+                "Reductech.Sequence.Connectors.Tesseract",
                 nameof(ConnectorSettings.Settings)
             )
         );
@@ -25,7 +25,7 @@ public static class SettingsHelpers
         if (connectorSettings.HasNoValue
          || connectorSettings.GetValueOrThrow() is not Entity ent)
             return ErrorCode.MissingStepSettings.ToErrorBuilder(
-                "Reductech.EDR.Connectors.Tesseract"
+                "Reductech.Sequence.Connectors.Tesseract"
             );
 
         var settingsObj = EntityConversionHelpers.TryCreateFromEntity<TesseractSettings>(ent);

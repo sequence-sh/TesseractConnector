@@ -1,9 +1,9 @@
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using Tesseract;
 
-namespace Reductech.EDR.Connectors.Tesseract;
+namespace Reductech.Sequence.Connectors.Tesseract;
 
 /// <summary>
 /// Settings for the Tesseract connector

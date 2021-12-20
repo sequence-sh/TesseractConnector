@@ -1,9 +1,9 @@
-using System.Reflection;
-using Reductech.EDR.ConnectorManagement.Base;
-using Reductech.EDR.Connectors.FileSystem;
-using Reductech.EDR.Core.Abstractions;
+﻿using System.Reflection;
+using Reductech.Sequence.ConnectorManagement.Base;
+using Reductech.Sequence.Connectors.FileSystem;
+using Reductech.Sequence.Core.Abstractions;
 
-namespace Reductech.EDR.Connectors.Tesseract.Tests;
+namespace Reductech.Sequence.Connectors.Tesseract.Tests;
 
 public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream>
 {
