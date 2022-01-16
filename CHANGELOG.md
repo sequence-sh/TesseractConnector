@@ -1,3 +1,12 @@
+# v0.13.0-alpha.1 (2022-01-16)
+
+## Issues Closed in this Release
+
+### Maintenance
+
+- Rename EDR to Sequence #30
+- Update Core to latest version #27
+
 # v0.12.0-alpha.1 (2021-11-26)
 
 Maintenance release - dependency updates only.
@@ -50,4 +59,5 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
+
 
