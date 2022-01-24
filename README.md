@@ -1,6 +1,6 @@
-# Sequence® Tesseract OCR Connector
+# SequenceÂ® Tesseract OCR Connector
 
-[Reductech Sequence](https://gitlab.com/reductech/sequence) is a collection of
+[Sequence](https://gitlab.com/reductech/sequence) is a collection of
 libraries that automates cross-application e-discovery and forensic workflows.
 
 This connector contains steps to perform optical character recognition (OCR)
@@ -24,18 +24,6 @@ The following needs to be installed:
 - <imageText> = TesseractOCR <imageData> <imageFormat>
 - Print <imageText>
 ```
-
-## Documentation
-
-Documentation is available here: https://docs.reductech.io
-
-## E-discovery Reduct
-
-The PowerShell Connector is part of a group of projects called
-[E-discovery Reduct](https://gitlab.com/reductech/sequence)
-which consists of a collection of [Connectors](https://gitlab.com/reductech/sequence/connectors)
-and a command-line application for running Sequences, called
-[Sequence](https://gitlab.com/reductech/sequence/console/-/releases).
 
 # Releases
 
