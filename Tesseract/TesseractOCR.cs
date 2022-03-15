@@ -18,6 +18,7 @@ public class TesseractOCR : CompoundStep<StringStream>
     [Required]
     [Alias("File")]
     [Log(LogOutputLevel.None)]
+    [Metadata("Path", "Read")]
     public IStep<StringStream> ImageData { get; set; } = null!;
 
     /// <summary>
@@ -82,10 +83,7 @@ public class TesseractOCR : CompoundStep<StringStream>
 
             var text = page.GetText();
 
-            stateMonad.Logger.LogInformation(
-                "Performing OCR",
-                page.GetMeanConfidence()
-            ); //TODO use proper logging
+            stateMonad.Logger.LogInformation("Performing OCR"); //TODO use proper logging
 
             stateMonad.Logger.LogInformation(
                 "Mean confidence: {Confidence}",
