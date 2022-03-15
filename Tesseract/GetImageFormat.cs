@@ -7,6 +7,7 @@ namespace Reductech.Sequence.Connectors.Tesseract;
 /// Gets the image format implied by the file extension of the file name.
 /// Note that this does not actually look at the file.
 /// </summary>
+[AllowConstantFolding]
 public class GetImageFormat : CompoundStep<SCLEnum<ImageFormat>>
 {
     /// <summary>
