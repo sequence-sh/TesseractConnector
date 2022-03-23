@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Reductech.Sequence.ConnectorManagement.Base;
 using Reductech.Sequence.Connectors.FileSystem;
+using Reductech.Sequence.Connectors.FileSystem.Steps;
 using Reductech.Sequence.Core.Abstractions;
 
 namespace Reductech.Sequence.Connectors.Tesseract.Tests;

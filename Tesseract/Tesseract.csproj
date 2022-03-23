@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reductech.Sequence.Core" Version="0.14.0-a.main.2203141351">
+    <PackageReference Include="Reductech.Sequence.Core" Version="0.14.0-a.main.2203211802">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tesseract" Version="4.1.1" />
