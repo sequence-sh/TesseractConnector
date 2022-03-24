@@ -1,3 +1,7 @@
+# v0.14.0-alpha.1 (2022-03-25)
+
+Maintenance release - dependency updates only.
+
 # v0.13.0-alpha.1 (2022-01-16)
 
 EDR is now Sequence. The following has changed:
@@ -67,5 +71,6 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
+
 
 
