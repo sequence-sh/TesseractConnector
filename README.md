@@ -25,6 +25,10 @@ The following needs to be installed:
 - Print <imageText>
 ```
 
+# Documentation
+
+Documentation available at https://sequence.sh
+
 # Releases
 
 Can be downloaded from the [Releases page](https://gitlab.com/reductech/sequence/connectors/tesseract/-/releases).
