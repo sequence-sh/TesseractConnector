@@ -1,3 +1,7 @@
+# v0.15.0-alpha.1 (2022-05-27)
+
+Maintenance release - dependency updates only.
+
 # v0.14.0-alpha.1 (2022-03-25)
 
 Maintenance release - dependency updates only.
@@ -71,6 +75,7 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
+
 
 
 
