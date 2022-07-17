@@ -1,6 +1,8 @@
 # v0.16.0-alpha.1 (2022-07-13)
 
-Maintenance release - dependency updates only.
+- Enabled [Source Link](https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/sourcelink)
+- Enabled publish to [Nuget.org](https://www.nuget.org) including symbols
+- Update Core to v0.16.0
 
 # v0.15.0-alpha.1 (2022-05-27)
 
@@ -79,8 +81,3 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
-
-
-
-
-
