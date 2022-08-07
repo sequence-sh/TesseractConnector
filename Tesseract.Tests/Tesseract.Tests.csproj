@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="Reductech.Sequence.Connectors.FileSystem" Version="0.17.0-a.main.2208020412" />
+    <PackageReference Include="Reductech.Sequence.Connectors.FileSystem" Version="0.17.0-a.main.2208060412" />
     <PackageReference Include="Reductech.Sequence.Core.TestHarness" Version="0.17.0-a.main.2208051532" />
     <PackageReference Include="System.IO.Abstractions" Version="16.1.26" />
     <PackageReference Include="xunit" Version="2.4.1" />
