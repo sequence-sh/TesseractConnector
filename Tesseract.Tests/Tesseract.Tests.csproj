@@ -24,7 +24,7 @@
     <PackageReference Include="Reductech.Sequence.Connectors.FileSystem" Version="0.17.0-a.main.2208060412" />
     <PackageReference Include="Reductech.Sequence.Core.TestHarness" Version="0.17.0-a.main.2208051532" />
     <PackageReference Include="System.IO.Abstractions" Version="16.1.26" />
-    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
