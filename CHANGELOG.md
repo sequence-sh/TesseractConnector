@@ -1,3 +1,7 @@
+# v0.17.0-alpha.1 (2022-08-29)
+
+Maintenance release - dependency updates only.
+
 # v0.16.0-alpha.1 (2022-07-13)
 
 - Enabled [Source Link](https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/sourcelink)
@@ -81,3 +85,4 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
+
