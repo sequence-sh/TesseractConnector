@@ -8,3 +8,4 @@ global using Reductech.Sequence.Core.Util;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using CSharpFunctionalExtensions;
+global using CSharpFunctionalExtensions.ValueTasks;

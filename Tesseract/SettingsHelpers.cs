@@ -10,12 +10,12 @@ namespace Reductech.Sequence.Connectors.Tesseract;
 public static class SettingsHelpers
 {
     /// <summary>
-    /// Try to get a TesseractSettings from a list of Connector Informations
+    /// Try to get a TesseractSettings from a list of Connector Information
     /// </summary>
     public static Result<TesseractSettings, IErrorBuilder> TryGetTesseractSettings(Entity settings)
     {
         var connectorSettings = settings.TryGetValue(
-            new EntityPropertyKey(
+            new EntityNestedKey(
                 StateMonad.ConnectorsKey,
                 "Reductech.Sequence.Connectors.Tesseract",
                 nameof(ConnectorSettings.Settings)
