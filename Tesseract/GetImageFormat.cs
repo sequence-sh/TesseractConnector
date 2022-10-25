@@ -18,7 +18,7 @@ public class GetImageFormat : CompoundStep<SCLEnum<ImageFormat>>
     public IStep<StringStream> FileName { get; set; } = null!;
 
     /// <inheritdoc />
-    protected override async Task<Result<SCLEnum<ImageFormat>, IError>> Run(
+    protected override async ValueTask<Result<SCLEnum<ImageFormat>, IError>> Run(
         IStateMonad stateMonad,
         CancellationToken cancellationToken)
     {
