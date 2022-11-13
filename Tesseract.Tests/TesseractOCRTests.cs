@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using Reductech.Sequence.ConnectorManagement.Base;
-using Reductech.Sequence.Connectors.FileSystem;
-using Reductech.Sequence.Connectors.FileSystem.Steps;
-using Reductech.Sequence.Core.Abstractions;
+using Sequence.ConnectorManagement.Base;
+using Sequence.Connectors.FileSystem;
+using Sequence.Connectors.FileSystem.Steps;
+using Sequence.Core.Abstractions;
 
-namespace Reductech.Sequence.Connectors.Tesseract.Tests;
+namespace Sequence.Connectors.Tesseract.Tests;
 
 public partial class TesseractOCRTests : StepTestBase<TesseractOCR, StringStream>
 {

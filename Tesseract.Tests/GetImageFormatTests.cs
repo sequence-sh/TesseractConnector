@@ -1,4 +1,4 @@
-﻿namespace Reductech.Sequence.Connectors.Tesseract.Tests;
+﻿namespace Sequence.Connectors.Tesseract.Tests;
 
 public partial class GetImageFormatTests : StepTestBase<GetImageFormat, SCLEnum<ImageFormat>>
 {
