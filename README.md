@@ -1,4 +1,4 @@
-# Sequence® Tesseract OCR Connector
+# Sequence Tesseract OCR Connector
 
 [Sequence®](https://sequence.sh) is a collection of libraries for
 automation of cross-application e-discovery and forensic workflows.
@@ -39,7 +39,7 @@ https://sequence.sh/playground
 
 # Package Releases
 
-Can be downloaded from the [Releases page](https://gitlab.com/reductech/sequence/connectors/tesseract/-/releases).
+Can be downloaded from the [Releases page](https://gitlab.com/sequence/connectors/tesseract/-/releases).
 
 # NuGet Packages
 
