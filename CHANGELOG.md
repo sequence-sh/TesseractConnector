@@ -1,3 +1,16 @@
+# v0.18.0-alpha.1 (2022-11-14)
+
+## Summary of Changes
+
+- Sequence has a new home: https://gitlab.com/sequence
+- The namespace has been updated from `Reductech.Sequence` to `Sequence`
+
+## Issues Closed in this Release
+
+### Other
+
+- Update namespace and paths after move to Sequence group #175
+
 # v0.17.0-alpha.1 (2022-08-29)
 
 Maintenance release - dependency updates only.
@@ -85,4 +98,3 @@ This is an _alpha_ release and is not production ready.
 ### Maintenance
 
 - Enable publish to connector registry #2
-
